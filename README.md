@@ -1,2 +1,5 @@
-# js_way
-The JavaScript Way by Baptiste Pesquet. Solutions to Problems
+### The JavaScript Way
+## by Baptiste Pesquet
+[Course link]   (https://github.com/thejsway/thejsway)
+
+#### Solutions to problems

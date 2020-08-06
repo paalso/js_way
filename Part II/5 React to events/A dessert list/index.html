@@ -1,0 +1,48 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter16.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>My favourite desserts</h1>
+
+    <ul id="desserts">
+        <li>Cake</li>
+        <li>Tea</li>
+    </ul>
+
+    <button id="addButton">Add a dessert</button>
+</body>
+
+<script>
+    // Write the JavaScript code that adds a new dessert to the list when the user clicks on the button.
+    // The dessert name is chosen by the user.
+    // Bonus points for adding the possibility of changing a dessert's name when clicking on it.
+
+    const dessertsElement = document.getElementById("desserts");
+
+    document.getElementById("addButton").addEventListener(
+        "click", e => {
+            const newListElement = document.createElement("li");
+            newListElement.innerText = prompt("New dessert:");
+
+            newListElement.addEventListener(
+                "click", e => newListElement.innerText = prompt("Edit dessert:")
+            )
+
+            dessertsElement.append(newListElement);
+        }
+    );
+
+</script>
+
+
+
+</html>

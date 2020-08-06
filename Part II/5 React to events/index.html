@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="para">A paragraph with a <button id="propa">button</button> inside</p>
+</body>
+
+<script>
+    // Click handler on the document
+    document.addEventListener("click", e => {
+        console.log("Document handler");
+    });
+    // Click handler on the paragraph
+    document.getElementById("para").addEventListener("click", e => {
+        console.log("Paragraph handler");
+    });
+    // Click handler on the button
+    document.getElementById("propa").addEventListener("click", e => {
+        console.log("Button handler");
+    });
+</script>
+
+</html>

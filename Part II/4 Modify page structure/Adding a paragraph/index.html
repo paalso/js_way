@@ -1,0 +1,46 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter15.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3 class="beginning">Some languages</h3>
+    <div id="content">
+        <ul id="languages">
+            <li id="cpp">C++</li>
+            <li id="java">Java</li>
+            <li id="csharp">C#</li>
+            <li id="php">PHP</li>
+            <li id="c">C</li>
+            <li id="python">Python</li>
+            <li id="ruby">Ruby</li>
+        </ul>
+    </div>
+</body>
+<script>
+    const linkURL = "https://en.wikipedia.org/wiki/List_of_programming_languages.";
+    const link = document.createElement("a");
+    link.setAttribute("href", linkURL);
+    link.textContent = "list";
+
+    const paragraph = document.createElement("p");
+    paragraph.innerText += "Here is a more complete ";
+    paragraph.appendChild(link);
+    paragraph.innerHTML += " of languages";
+
+    // paragraph.appendChild(document.createTextNode("Here is a more complete "))
+    // paragraph.appendChild(link);
+    // paragraph.appendChild(document.createTextNode(" of languages"));
+
+    console.log(paragraph);
+    document.getElementById("languages").insertAdjacentElement("afterend", paragraph);
+</script>
+
+</html>

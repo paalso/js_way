@@ -1,0 +1,65 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter16.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="content"></div>
+</body>
+
+<script>
+    // List of questions (statement + answer)
+    const questions = [
+        {
+            statement: "2+2?",
+            answer: "2+2 = 4"
+        },
+        {
+            statement: "In which year did Christopher Columbus discover America?",
+            answer: "1492"
+        },
+        {
+            statement:
+                "What occurs twice in a lifetime, but once in every year, twice in a week but never in a day?",
+            answer: "The E letter"
+        }
+    ];
+
+        const createDiv = (number, question, answer) => {
+            const element = document.createElement("div");
+            
+            const elementQuestion = document.createElement("h4");
+            elementQuestion.innerHTML = `Question ${number}: <i>${question}</i>`;
+
+            const elementAnswer = document.createElement("p");
+            elementAnswer.innerText = answer;
+            elementAnswer.style.display = "none";
+
+            const elementButton = document.createElement("button");
+            elementButton.innerText = "Show answer";
+            elementButton.addEventListener(
+                "click", e => {
+                    elementAnswer.style.display = "block";
+                    elementButton.style.display = "none";
+                }
+            );
+
+            element.append(elementQuestion, elementAnswer, elementButton);
+            return element;
+        }
+
+        const contentElements = questions.map(
+            ({statement, answer}, i) => createDiv(i + 1, statement, answer)
+        );
+
+        document.getElementById("content").append(...contentElements);
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter15.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Some newspapers</h3>
+    <div id="content"></div>
+</body>
+
+<script>
+    const newspapers =
+        ["https://www.nytimes.com",
+            "https://www.washingtonpost.com",
+            "http://www.economist.com"];
+
+    const createListItem = linkURL => {
+        const link = document.createElement("a");
+        link.setAttribute("href", linkURL);
+        link.innerText = linkURL;
+
+        const listItem = document.createElement("li");
+        listItem.appendChild(link);
+        return listItem;
+    };
+
+    const newspapersList = document.createElement("ul");
+
+    newspapers.forEach(
+        item => newspapersList.appendChild(createListItem(item))
+    );
+
+    console.log(newspapersList);
+    document.getElementById("content").appendChild(newspapersList);
+
+</script>
+
+</html>

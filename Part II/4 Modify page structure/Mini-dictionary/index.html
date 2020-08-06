@@ -1,0 +1,67 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter15.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>A mini-dictionary</h3>
+    <div id="content"></div>
+</body>
+
+<script>
+    const words = [
+        {
+            term: "Procrastination",
+            definition: "Avoidance of doing a task that needs to be accomplished"
+        },
+        {
+            term: "Tautology",
+            definition: "logical argument constructed in such a way that it is logically irrefutable"
+        }, {
+            term: "Oxymoron",
+            definition: "figure of speech that juxtaposes elements that appear to be contradictory"
+        }];
+
+    const createDefinitionItem = (term, definition) => {
+        const dt = document.createElement("dt");
+        dt.appendChild(document.createTextNode(term));
+        const dd = document.createElement("dd");
+        dd.appendChild(document.createTextNode(definition));
+
+        return {
+            "dt": dt, "dd": dd
+        }
+    };
+
+    const createDefinition = wordsList => {
+        const definition = document.createElement("dl");
+
+        const definitionsList = wordsList.map(
+            ({ term, definition }) => createDefinitionItem(term, definition)
+        );
+
+        definitionsList.reduce(
+            (acc, { dt, dd }) => {
+                acc.appendChild(dt);
+                acc.appendChild(dd);
+                return acc;
+            }, definition
+        );
+        return definition;
+    };
+
+    const dl = createDefinition(words);
+    document.getElementById("content").appendChild(dl);
+    console.log(dl);
+
+
+</script>
+
+</html>

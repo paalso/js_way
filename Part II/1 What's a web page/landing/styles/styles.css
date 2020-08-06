@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+
+    background-color: #00539f;
+}
+
+main {
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+h1 {
+    padding: 20px 0;
+    font-size: 60px;
+    color: #00539f;
+    text-align: center;
+    text-shadow: 3px 3px 1px black;
+    /* font-stretch: semi-condensed; */
+    /* letter-spacing: -1px; */
+}
+
+img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+main {
+    width: 600px;
+    margin: 0 auto;
+    border: solid black 5px;
+    background-color: #ff9500;
+    padding: 0 20px;
+
+
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+ul {
+    margin: 20px 0 20px 0;
+}
+
+li {
+    margin-left: 40px;
+}

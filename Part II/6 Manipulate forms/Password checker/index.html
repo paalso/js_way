@@ -12,17 +12,17 @@
 
 <body>
     <form>
-        <p>
+        <p class="passwordItem">
             <label for="password1">Enter the password</label>:
             <input type="password" name="password1" id="password1" required>
-            <span id="password1Help"></span>
+            <span></span>
         </p>
-        <p>
+        <p class="passwordItem">
             <label for="password2">Confirm the password</label>:
             <input type="password" name="password2" id="password2" required>
-            <span id="password2Help"></span>
+            <span></span>
         </p>
-        
+
         <p id="passwordMatchingHelp"></p>
 
         <input type="submit" value="Send">
@@ -51,33 +51,30 @@
     document.querySelector("form").addEventListener(
         "submit", e => {
 
-            const password1Text = document.getElementById("password1").value;
-            const password2Text = document.getElementById("password2").value;
+            const passwordParagraphElements = document.querySelectorAll("form .passwordItem");
+            const passwordElementsTexts = [];
 
-            if (password1Text !== password2Text) {
+            passwordParagraphElements.forEach(
+                el => {
+                    const passwordText = el.querySelector("input[type=password]").value;
+                    passwordElementsTexts.push(passwordText);
+                    const passwordHelpText = checkPasswordText(passwordText);
+
+                    if (passwordHelpText) {
+                        const passwordHelpElement = el.querySelector("span");
+                        passwordHelpElement.innerText = passwordHelpText;
+                        passwordHelpElement.style.color = "red";
+                        e.preventDefault();
+                    }
+                }
+            );
+
+            if (new Set(passwordElementsTexts).size > 1) {
                 const passworMatchingElement = document.getElementById("passwordMatchingHelp");
                 passworMatchingElement.textContent = "The two inputted passwords must be identical.";
                 passworMatchingElement.style.color = "red";
                 e.preventDefault();
             }
-
-            const password1HelpText = checkPasswordText(password1Text);
-            const password2HelpText = checkPasswordText(password2Text);
-
-            if (password1HelpText) {
-                const password1HelpElement = document.getElementById("password1Help");
-                password1HelpElement.innerText = password1HelpText;
-                password1HelpElement.style.color = "red";
-                e.preventDefault();
-            }
-
-            if (password1HelpText) {
-                const password1HelpElement = document.getElementById("password2Help");
-                password1HelpElement.innerText = password2HelpText;
-                password1HelpElement.style.color = "red";
-                e.preventDefault();
-            }
-
         }
     );
 

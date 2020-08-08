@@ -1,0 +1,112 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter17.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>A few of the Game of Thrones characters</h1>
+    <form>
+        <label for="house">House</label>:
+        <select name="house" id="house">
+            <option value="" selected>Select a house</option>
+        </select>
+    </form>
+
+    <p>
+        <ul id="characters"></ul>
+    </p>
+
+    <p id="passwordHelp"></p>
+</body>
+<script>
+
+    // Complete this code so that:
+    // The house dropdown list is filled during page load.
+    // The list of characters is shown whenever the user selects a new house in the list.
+
+    // Character list. Each house has a name and a code
+    const houses = [
+        {
+            code: "ST",
+            name: "Stark"
+        },
+        {
+            code: "LA",
+            name: "Lannister"
+        },
+        {
+            code: "BA",
+            name: "Baratheon"
+        },
+        {
+            code: "TA",
+            name: "Targaryen"
+        }
+    ];
+
+    const getHousesNames = housesInfo => housesInfo.map(
+        ({ code, name }) => name
+    );
+
+    // const getCodeByName = name => name.slice(0, 2).toUpperCase();
+
+    // Fills the given form with options
+    const fillSelectForm = (selectForm, items) => {
+        selectForm.innerHTML = "";
+
+        items.forEach(
+            item => {
+                const nextOption = document.createElement("option");
+                nextOption.textContent = item;
+                nextOption.value = item.slice(0, 2).toUpperCase();
+                selectForm.append(nextOption);
+            }
+        )
+    };
+
+    // Fills the given list with items
+    const fillList = (listForm, items) => {
+        listForm.innerHTML = "";
+        items.forEach(
+            item => {
+                const nextOption = document.createElement("li");
+                nextOption.textContent = item;
+                listForm.append(nextOption);
+            }
+        );
+    }
+
+
+    // Return an array of characters belonging to a house
+    const getCharacters = houseCode => {
+        switch (houseCode) {
+            case "ST":
+                return ["Eddard", "Catelyn", "Robb", "Sansa", "Arya", "Jon Snow"];
+            case "LA":
+                return ["Tywin", "Cersei", "Jaime", "Tyrion"];
+            case "BA":
+                return ["Robert", "Stannis", "Renly"];
+            case "TA":
+                return ["Aerys", "Daenerys", "Viserys"];
+            default:
+                return []; // Empty array
+        }
+    };
+
+    fillSelectForm(document.getElementById("house"), getHousesNames(houses));
+
+    document.getElementById("house").addEventListener(
+        "change", e => fillList(document.getElementById("characters"), getCharacters(e.target.value.slice(0, 2).toUpperCase()))
+    );
+
+
+</script>
+
+</html>

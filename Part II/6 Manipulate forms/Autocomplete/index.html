@@ -34,6 +34,9 @@
     <label for="country">Enter a country name</label>:
     <input type="text" id="country">
     <div id="suggestions"></div>
+
+    <!-- <input type="submit" value="Отправить"> -->
+
 </body>
 <script>
 
@@ -55,23 +58,25 @@
         "Azerbaïjan"
     ];
 
-    const createSelectForm = (strings) => {
-        const selectForm = document.createElement("select");
-        selectForm.name = "country";
-        selectForm.size = strings.length;
+    const createListElement = (strings) => {
+        const listElement = document.createElement("ul");
+        listElement.style.listStyleType = "none";
+        listElement.style.paddingLeft = 0;
+        listElement.style.marginTop = 0;
+        listElement.style.marginBottom = 0;
         strings.forEach(
             string => {
-                const newOption = document.createElement("option");
-                newOption.textContent = string;
-                newOption.value = string;
-                selectForm.append(newOption);
+                const newItem = document.createElement("li");
+                newItem.textContent = string;
+
+                newItem.addEventListener(
+                    "click", e => document.getElementById("country").value = newItem.textContent);
+                listElement.append(newItem);
             }
         );
-        selectForm.addEventListener("change", e => {
-            console.log("Country: " + e.target.value);
-        });
 
-        return selectForm;
+        // document.querySelector("form").preventDefault();
+        return listElement;
     }
 
     const matchingWords = (wordsList, prefix) => wordsList.filter(
@@ -86,9 +91,16 @@
             const prefix = countryElement.value;
             const itemsList = matchingWords(countryList, prefix);
             suggestionsElement.innerHTML = "";
-            suggestionsElement.append(createSelectForm(itemsList));
+            suggestionsElement.append(createListElement(itemsList));
         }
     );
+
+    // document.querySelector("form").addEventListener(
+    //     "submit", e => {
+    //         console.log(countryElement.value);
+    //         suggestionsElement.innerHTML = "";
+    //     }
+    // );
 
 </script>
 

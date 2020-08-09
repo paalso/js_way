@@ -1,0 +1,95 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter17.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* Add spacing between each country suggestion */
+        .suggestion {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        /* Change suggestion color when hovering it with the mouse */
+        .suggestion:hover {
+            background-color: #adf;
+            cursor: pointer;
+        }
+
+        /* Position the suggestion list just below the input box */
+        #suggestions {
+            position: absolute;
+            border: 1px solid black;
+            left: 155px;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="country">Enter a country name</label>:
+    <input type="text" id="country">
+    <div id="suggestions"></div>
+</body>
+<script>
+
+    // Country list
+    const countryList = [
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Andorra",
+        "Angola",
+        "Anguilla",
+        "Antarctica",
+        "Antigua-and-Barbuda",
+        "Argentina",
+        "Armenia",
+        "Aruba",
+        "Australia",
+        "Autria",
+        "Azerbaïjan"
+    ];
+
+    const createSelectForm = (strings) => {
+        const selectForm = document.createElement("select");
+        selectForm.name = "country";
+        selectForm.size = strings.length;
+        strings.forEach(
+            string => {
+                const newOption = document.createElement("option");
+                newOption.textContent = string;
+                newOption.value = string;
+                selectForm.append(newOption);
+            }
+        );
+        selectForm.addEventListener("change", e => {
+            console.log("Country: " + e.target.value);
+        });
+
+        return selectForm;
+    }
+
+    const matchingWords = (wordsList, prefix) => wordsList.filter(
+        word => word.toLowerCase().startsWith(prefix.toLowerCase())
+    );
+
+    const countryElement = document.getElementById("country");
+    const suggestionsElement = document.getElementById("suggestions");
+
+    countryElement.addEventListener(
+        "change", e => {
+            const prefix = countryElement.value;
+            const itemsList = matchingWords(countryList, prefix);
+            suggestionsElement.innerHTML = "";
+            suggestionsElement.append(createSelectForm(itemsList));
+        }
+    );
+
+</script>
+
+</html>

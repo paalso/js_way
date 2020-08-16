@@ -1,0 +1,71 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter18.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #chronometer {}
+
+        button {
+            width: 80px;
+            background-color: lightgreen;
+        }
+    </style>
+
+</head>
+
+<!-- Chronometer -->
+<!-- Write an interactive web page with a button to start and stop a chronometer
+counting the number of elapsed seconds. -->
+
+<body>
+    <p>Time passed: <span id="chronometer">0</span></p>
+
+    <button>Start</button>
+</body>
+<script>
+
+    const secondsToTime = (seconds) => {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds - hours * 3600) / 60);
+        seconds = seconds % 60;
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    };
+
+    const counterElement = document.getElementById("chronometer");
+    const buttonElement = document.querySelector("button");
+
+    buttonElement.addEventListener(
+        "click", e => {
+            if (buttonElement.textContent !== "Wait") {
+                buttonElement.textContent = "Wait";
+                buttonElement.style.backgroundColor = "lightsalmon";
+            } else {
+                buttonElement.textContent = "Go on";
+                buttonElement.style.backgroundColor = "lightgreen";
+            }
+
+        }
+    );
+
+    let secondsCounter = 0;
+    const incCounter = () => {
+        const counter = Number(counterElement.textContent);
+        if (buttonElement.textContent === "Wait") {
+            secondsCounter += 1;
+            counterElement.textContent = secondsToTime(secondsCounter);
+        }
+    };
+
+    const intervalId = setInterval(incCounter, 1000);
+
+
+</script>
+
+</html>

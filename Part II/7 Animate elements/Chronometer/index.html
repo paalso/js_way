@@ -14,6 +14,11 @@
 
         button {
             width: 80px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        button#startButton {
             background-color: lightgreen;
         }
     </style>
@@ -27,7 +32,8 @@ counting the number of elapsed seconds. -->
 <body>
     <p>Time passed: <span id="chronometer">0</span></p>
 
-    <button>Start</button>
+    <button id="startButton">Start</button>
+    <button id="reloadButton">Reload</button id="reloadButton">
 </body>
 <script>
 
@@ -39,25 +45,36 @@ counting the number of elapsed seconds. -->
     };
 
     const counterElement = document.getElementById("chronometer");
-    const buttonElement = document.querySelector("button");
+    const startButtonElement = document.getElementById("startButton");
+    const reloadButtonElement = document.getElementById("reloadButton");
 
-    buttonElement.addEventListener(
+    startButtonElement.addEventListener(
         "click", e => {
-            if (buttonElement.textContent !== "Wait") {
-                buttonElement.textContent = "Wait";
-                buttonElement.style.backgroundColor = "lightsalmon";
+            if (startButtonElement.textContent !== "Wait") {
+                startButtonElement.textContent = "Wait";
+                startButtonElement.style.backgroundColor = "lightsalmon";
             } else {
-                buttonElement.textContent = "Go on";
-                buttonElement.style.backgroundColor = "lightgreen";
+                startButtonElement.textContent = "Go on";
+                startButtonElement.style.backgroundColor = "lightgreen";
             }
 
         }
     );
 
+    reloadButtonElement.addEventListener(
+        "click", e => {
+            secondsCounter = 0;
+            // clearInterval(intervalId);
+            startButtonElement.textContent = "Start";
+            startButtonElement.style.backgroundColor = "lightgreen";
+            counterElement.textContent = "0";
+        }
+    );
+
     let secondsCounter = 0;
     const incCounter = () => {
-        const counter = Number(counterElement.textContent);
-        if (buttonElement.textContent === "Wait") {
+        // const counter = Number(counterElement.textContent);
+        if (startButtonElement.textContent === "Wait") {
             secondsCounter += 1;
             counterElement.textContent = secondsToTime(secondsCounter);
         }

@@ -1,0 +1,78 @@
+<!-- https://github.com/thejsway/thejsway/blob/master/manuscript/chapter18.md -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #ball {
+            position: relative;
+            left: 0px;
+            width: 100px;
+            /* border: 1px red solid;
+            border-radius: 50%; */
+        }
+    </style>
+
+</head>
+
+<!-- Bouncing ball -->
+<!-- Write the JavaScript code that makes the ball bounce horizontally. -->
+
+<body>
+    <p>
+        <button id="start">Start</button>
+        <button id="stop" disabled>Stop</button>
+    </p>
+
+    <div id="frame">
+        <!-- Update the "src" attribute if you downloaded the image locally -->
+        <!-- <img id="ball" src="https://raw.githubusercontent.com/bpesquet/thejsway/master/resources/basketball.jpg"> -->
+        <img id="ball" src="basketball.jpg">
+    </div>
+</body>
+<script>
+    const ballElement = document.getElementById("ball");
+    const ballWidth = parseFloat(getComputedStyle(ballElement).width);
+    const startElement = document.getElementById("start");
+    const stopElement = document.getElementById("stop");
+    var animationID;
+    let movement = 5;
+
+    console.log(ballWidth);
+
+    const moveBall = () => {
+        const xBlock = parseFloat(getComputedStyle(ballElement).left);
+        let xMax = window.innerWidth;
+        console.log(xBlock, ballWidth, xMax);
+
+        if (xBlock + ballWidth > xMax || xBlock < 0)
+            movement = -movement;
+
+        ballElement.style.left = (xBlock + movement) + "px";
+        animationId = requestAnimationFrame(moveBall);
+    };
+
+    // requestAnimationFrame(moveBall);
+
+    startElement.addEventListener(
+        "click", e => {
+            animationID = requestAnimationFrame(moveBall);
+            stopElement.disabled = false;
+            startElement.disabled = true;
+        }
+    );
+
+    stopElement.addEventListener(
+        "click", e => cancelAnimationFrame(animationId)
+    );
+
+
+</script>
+
+</html>

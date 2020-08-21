@@ -44,12 +44,10 @@
     var animationID;
     let movement = 5;
 
-    console.log(ballWidth);
-
     const moveBall = () => {
         const xBlock = parseFloat(getComputedStyle(ballElement).left);
         let xMax = window.innerWidth;
-        console.log(xBlock, ballWidth, xMax);
+        // console.log(xBlock, ballWidth, xMax);
 
         if (xBlock + ballWidth > xMax || xBlock < 0)
             movement = -movement;
@@ -69,7 +67,11 @@
     );
 
     stopElement.addEventListener(
-        "click", e => cancelAnimationFrame(animationId)
+        "click", e => {
+            cancelAnimationFrame(animationId);
+            stopElement.disabled = true;
+            startElement.disabled = false;
+        }
     );
 
 

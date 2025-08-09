@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-family: sans-serif;
+  background: #00599b;
+}
+
+.about-section {
+  width: 640px;
+  margin: 0 auto;
+  padding: 45px 30px 30px 30px;
+
+  background-color: #ff902b;
+  border: black solid 5px;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 1px;
+}
+
+.about-header {
+  margin-bottom: 35px;
+  font-weight: normal;
+  font-size: 60px;
+  text-align: center;
+  color: #00599b;
+  text-shadow: 3px 3px 1px black;
+}
+
+.about-logo {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  margin-bottom: 15px;
+}
+
+.roles-list {
+  margin-left: 50px;
+}

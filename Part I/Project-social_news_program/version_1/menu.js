@@ -22,7 +22,7 @@ function showLinks(links) {
     alert(output);
 }
 
-// !!!When removing a link, the user is asked for the link index until it is correct. The associated link is then removed. Subsequently, it must disappear from the shown links. Removing a link is not possible if there are no existing lin
+// !!!When removing a link, the user is asked for the link index until it is correct. The associated link is then removed. Subsequently, it must disappear from the shown links. Removing a link is not possible if there are no existing links
 
 function removeLink(links) {
     if (links.length === 0) {

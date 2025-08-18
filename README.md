@@ -1,5 +1,4 @@
-### The JavaScript Way
-## by Baptiste Pesquet
-[Course link]   (https://github.com/thejsway/thejsway)
+# Baptiste Pesquet's The JavaScript 
+[Course link](https://github.com/thejsway/thejsway)
 
-#### Solutions to problems
+### Analysis of examples and problem solving

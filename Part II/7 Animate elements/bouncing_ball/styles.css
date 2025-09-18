@@ -1,0 +1,8 @@
+#ball {
+  position: relative;
+  left: 0px;
+}
+
+#frame {
+  width: 800px;
+}

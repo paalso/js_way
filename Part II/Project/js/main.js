@@ -62,7 +62,7 @@ const addNewLink = (e) => {
     const author = e.target.elements.author.value;
     const title = e.target.elements.title.value;
     const url = normalizeURL(e.target.elements.url.value);
-    contentContainer.append(getNewLink({ title, url, author }));
+    contentContainer.prepend(getNewLink({ title, url, author }));
     submitButton.style.display = "inline-block";
     linkForm.remove();
     e.preventDefault();
